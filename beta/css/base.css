@@ -1,0 +1,17 @@
+/* BASE STYLES - Typography, reset, and basic elements */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #8ecae6;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

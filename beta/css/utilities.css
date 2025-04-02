@@ -1,0 +1,40 @@
+/* UTILITIES STYLES - Animation keyframes and utility classes */
+
+/* Animation keyframes */
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes notificationSlideIn {
+    from { transform: translateX(120%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Progress bar */
+.progress-container {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.progress-text {
+    color: white;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #34495e;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #3498db;
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}

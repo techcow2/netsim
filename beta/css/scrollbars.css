@@ -1,0 +1,50 @@
+/* SCROLLBAR STYLES - Custom scrollbar styling for the application */
+
+/* WebKit browsers (Chrome, Safari, Opera) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2b2d42;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #00ff00, #00cc00);
+    border-radius: 10px;
+    border: 2px solid #2b2d42;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #00ff00, #009900);
+    box-shadow: 0 0 15px #00ff00;
+}
+
+::-webkit-scrollbar-corner {
+    background: #2b2d42;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #00ff00 #2b2d42;
+}
+
+/* MS Edge and IE */
+*::-ms-scrollbar {
+    width: 10px;
+}
+
+*::-ms-scrollbar-track {
+    background: #2b2d42;
+    border-radius: 10px;
+}
+
+*::-ms-scrollbar-thumb {
+    background: linear-gradient(45deg, #00ff00, #00cc00);
+    border-radius: 10px;
+    border: 2px solid #2b2d42;
+    box-shadow: 0 0 10px #00ff00;
+}

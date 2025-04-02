@@ -1,0 +1,415 @@
+/* COMPONENTS STYLES - UI components like buttons, inputs, panels */
+
+/* Address Bar */
+#addressbar-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    background: white;
+    border-radius: 20px;
+    margin: 0 8px;
+    padding: 2px 8px;
+    position: relative;
+}
+
+#addressbar-container:focus-within {
+    box-shadow: 0 0 0 2px rgba(52, 152, 219,0.5);
+}
+
+#addressbar {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding: 6px 8px;
+    width: 100%;
+}
+
+#addressbar-container .btn {
+    background-color: #3498db;
+    color: white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;
+}
+
+#addressbar-container .btn:hover {
+    background-color: #2980b9;
+}
+
+/* Button Styles */
+.btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    margin: 0 2px;
+    color: #ecf0f1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.btn:active {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Bookmarks Panel */
+#bookmarks-panel {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    display: none;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.bookmark-item {
+    padding: 8px 16px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.bookmark-item:hover {
+    background-color: #f5f5f5;
+}
+
+.bookmark-item:last-child {
+    border-bottom: none;
+}
+
+.delete-bookmark {
+    padding: 4px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.delete-bookmark:hover {
+    background-color: #fee2e2;
+}
+
+.clear-all-bookmarks {
+    transition: background-color 0.2s;
+}
+
+/* Revisions Panel */
+#revisions-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: none;
+    max-height: 60vh;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.revision-item {
+    display: flex;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.revision-item:hover {
+    background-color: #f5f5f5;
+}
+
+.revision-screenshot {
+    width: 150px;
+    height: 90px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.revision-prompt {
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+/* Model Selection */
+#model-select-container {
+    position: relative;
+}
+
+#model-select-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    margin: 0 2px;
+    color: #ecf0f1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#model-text {
+    margin-left: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+    font-size: 14px;
+}
+
+#model-options {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #2c3e50;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    min-width: 180px;
+    overflow: hidden;
+    display: none;
+}
+
+.model-option {
+    padding: 10px 15px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.model-option:hover {
+    background-color: #3498db;
+}
+
+.model-option.selected {
+    background-color: #2980b9;
+    font-weight: 500;
+}
+
+/* Loading overlay */
+#loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(52, 152, 219, 0.2);
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loading-text {
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.progress-container {
+    width: 90%;
+    max-width: 400px;
+    margin-top: 10px;
+}
+
+.generation-stage {
+    color: #3498db;
+    font-size: 16px;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #3498db;
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+/* Publish button */
+#publish-btn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: none;
+}
+
+#publish-btn:hover {
+    background-color: #2ecc71;
+}
+
+/* Element highlighting and edit menu */
+.highlight {
+    outline: 2px solid #3498db;
+    position: relative;
+}
+
+.edit-menu {
+    background-color: #2c3e50;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    padding: 8px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.edit-menu button {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.edit-menu button:last-child {
+    margin-bottom: 0;
+}
+
+.edit-menu button:hover {
+    background-color: #3498db;
+}
+
+.edit-menu button svg {
+    margin-right: 8px;
+}
+
+/* Progress bar for loading */
+.progress-container {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.progress-text {
+    color: white;
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.progress-bar {
+    height: 8px;
+    background-color: #34495e;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #3498db;
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+/* Uploaded Images Container */
+.uploaded-images-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(44, 62, 80, 0.5);
+    border-radius: 4px;
+}
+
+.uploaded-image-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.uploaded-image-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-image-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    background-color: rgba(231, 76, 60, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.remove-image-btn:hover {
+    background-color: rgba(231, 76, 60, 1);
+}

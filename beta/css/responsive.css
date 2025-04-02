@@ -1,0 +1,155 @@
+/* RESPONSIVE STYLES - Media queries for responsive design */
+
+@media (max-width: 1024px) {
+    body, html {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+    
+    #browser {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    
+    #titlebar {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
+    
+    #toolbar {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 8px 4px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    #toolbar-left, #toolbar-right {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        width: auto;
+    }
+    
+    #addressbar-container {
+        width: 100%;
+        margin: 8px 0;
+        order: -1;
+    }
+    
+    #content {
+        height: auto;
+        flex-grow: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    #status-bar {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+    
+    #bookmarks-panel, #revisions-panel {
+        width: 98%;
+        max-width: none;
+        left: 1%;
+        right: 1%;
+    }
+    
+    .btn {
+        padding: 8px;
+        margin: 2px;
+    }
+    
+    .btn svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    #addressbar {
+        font-size: 16px;
+        padding: 10px 12px;
+    }
+    
+    #addressbar-container .btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    #publish-btn {
+        font-size: 14px;
+        padding: 12px 12px;
+        margin-top: 8px;
+        width: auto;
+    }
+    
+    #model-select-btn {
+        padding: 8px;
+    }
+    
+    .model-option {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+    
+    #model-select-container {
+        position: relative;
+    }
+    
+    #model-options {
+        position: absolute;
+        top: auto;
+        bottom: 100%;
+        right: 0;
+        left: auto;
+        transform: none;
+        width: 180px;
+        z-index: 1001;
+    }
+}
+
+@media (max-width: 768px) {
+    .notification {
+        left: 20px;
+        right: 20px;
+        max-width: none;
+    }
+    
+    .modal-content {
+        width: 90%;
+        margin: 30% auto;
+    }
+    
+    .edit-menu {
+        min-width: 120px;
+    }
+
+    #model-text {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 6px;
+    }
+    
+    .btn svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    #addressbar-container .btn {
+        width: 32px;
+        height: 32px;
+    }
+}
