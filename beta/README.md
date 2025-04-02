@@ -66,6 +66,3 @@ If you encounter critical issues with the beta build, you can revert to the stab
 ## 🙏 Thank You
 
 Thank you for helping test the next version of NetSim! Your participation helps make this project better for everyone.
-
----
-Answer from Perplexity: pplx.ai/share
