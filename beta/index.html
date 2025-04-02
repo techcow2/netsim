@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetSim - AI Powered Simulations</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <meta property="og:image" content="logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+</head>
+<body>
+<div id="desktop">
+    <div id="browser">
+        <div id="titlebar">
+            <div id="window-controls">
+                <div class="window-button" id="close-button"></div>
+                <div class="window-button" id="minimize-button"></div>
+                <div class="window-button" id="maximize-button"></div>
+            </div>
+            <span id="page-title">NetSim - AI Powered Simulations</span>
+        </div>
+        <div id="toolbar">
+            <div id="toolbar-left">
+                <button class="btn" onclick="refreshPage()" title="Reload">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M17.65,6.35C16.2,4.9 14.21,4 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20C15.73,20 18.84,17.45 19.73,14H17.65C16.83,16.33 14.61,18 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6C13.66,6 15.14,6.69 16.22,7.78L13,11H20V4L17.65,6.35Z" />
+                    </svg>
+                </button>
+                <button class="btn" onclick="goBack()" title="Back">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                    </svg>
+                </button>
+                <button class="btn" onclick="goHome()" title="Home">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M10,20V14H14V20H19V12H16L12,8L8,12H5V20H10M12,3.84L18,9.84V20A2,2 0 0,1 16,22H8A2,2 0 0,1 6,20V9.84L12,3.84Z" />
+                    </svg>
+                </button>
+                <button class="btn" onclick="improvePrompt()" title="Improve Prompt">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M7.5,5.6L5,7L6.4,4.5L5,2L7.5,3.4L10,2L8.6,4.5L10,7L7.5,5.6M19.5,15.4L22,14L20.6,16.5L22,19L19.5,17.6L17,19L18.4,16.5L17,14L19.5,15.4M22,2L20.6,4.5L22,7L19.5,5.6L17,7L18.4,4.5L17,2L19.5,3.4L22,2M13.34,12.78L15.78,10.34L13.66,8.22L11.22,10.66L13.34,12.78M14.37,7.29L16.71,9.63C17.1,10 17.1,10.65 16.71,11.04L5.04,22.71C4.65,23.1 4,23.1 3.63,22.71L1.29,20.37C0.9,20 0.9,19.35 1.29,18.96L12.96,7.29C13.35,6.9 14,6.9 14.37,7.29Z" />
+                    </svg>
+                </button>
+            </div>
+            <div id="addressbar-container">
+                <input type="text" id="addressbar" autocomplete="off" placeholder="Describe a web app or website">
+                <button class="btn" onclick="handleAddressBarSubmit()" title="Create or Edit">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M19.78,2H4.22C3,2 2,3 2,4.22V19.78C2,21 3,22 4.22,22H19.78C21,22 22,21 22,19.78V4.22C22,3 21,2 19.78,2M12,4L14.8,9.2H9.2L12,4M17,20H7L11.2,12H12.8L17,20M14.8,11.2L18,5.5V11.2H14.8M6,5.5L9.2,11.2H6V5.5M6,18.5V12.8H9.2L6,18.5M18,18.5L14.8,12.8H18V18.5Z" />
+                    </svg>
+                </button>
+                <button class="btn" onclick="addBookmark()" title="Bookmark">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.63L12,2L9.19,8.63L2,9.24L7.46,13.97L5.82,21L12,17.27Z" />
+                    </svg>
+                </button>
+                <!-- Revisions panel removed -->
+            </div>
+            <div id="toolbar-right">
+                <div id="model-select-container">
+                    <button id="model-select-btn" class="btn" title="Select Model">
+                        <svg viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M7,2H17A2,2 0 0,1 19,4V20A2,2 0 0,1 17,22H7A2,2 0 0,1 5,20V4A2,2 0 0,1 7,2M7,4V8H17V4H7M7,10V12H9V10H7M11,10V12H13V10H11M15,10V12H17V10H15M7,14V16H9V14H7M11,14V16H13V14H11M15,14V16H17V14H15M7,18V20H9V18H7M11,18V20H13V18H11M15,18V20H17V18H15Z" />
+                        </svg>
+                        <span id="model-text"></span>
+                    </button>
+                    <div id="model-options">
+                        <div class="model-option" data-model="claude-3.5-sonnet">Claude 3.5 Sonnet</div>
+                        <div class="model-option" data-model="gpt-4o">GPT-4o</div>
+                        <div class="model-option" data-model="gemini-2.5-pro">Gemini 2.5 Pro (Free Exp)</div>
+                        <div class="model-option" data-model="deepseek-chat">DeepSeek Chat</div>
+                    </div>
+                </div>
+                <button class="btn" onclick="showApiKeyModal()" title="API Settings">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19,9H15V3H9V9H5L12,16L19,9M14.8,11.2L18,5.5V11.2H14.8M6,5.5L9.2,11.2H6V5.5M6,18.5V12.8H9.2L6,18.5M18,18.5L14.8,12.8H18V18.5Z" />
+                    </svg>
+                </button>
+                <button class="btn" onclick="downloadSimulation()" title="Download">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9M14.8,11.2L18,5.5V11.2H14.8M6,5.5L9.2,11.2H6V5.5M6,18.5V12.8H9.2L6,18.5M18,18.5L14.8,12.8H18V18.5Z" />
+                    </svg>
+                </button>
+                <button class="btn" onclick="toggleBookmarks()" title="View Bookmarks">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5A2,2 0 0,0 17,3M15,11H9V9H15V11Z" />
+                    </svg>
+                </button>
+                <button class="btn" onclick="showImageUploadModal()" title="Add Images">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M19,19H5V5H19M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 19,3M13.96,12.29L11.21,15.83L9.25,13.47L6.5,17H17.5L13.96,12.29Z" />
+                    </svg>
+                </button>
+                <button class="btn" onclick="showAutoSavesModal()" title="Saved Simulations">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" />
+                    </svg>
+                </button>
+            </div>
+            <button id="publish-btn" onclick="publishSimulation()">Publish</button>
+        </div>
+        <div id="content">
+            <div class="min-h-screen text-white font-sans">
+                <div class="max-w-6xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+                    <img src="logo.png" alt="Logo" class="logo-img" style="max-width: 50%; height: auto; display: block; margin: 0 auto; padding: 0; line-height: 0;">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-8 shadow-xl">
+                            <h2 class="text-3xl font-bold mb-6 text-yellow-300">How to Use NetSim</h2>
+                            <ol class="list-decimal list-inside space-y-3">
+                                <li>Enter a description in the address bar</li>
+                                <li>Click "Create" or press Enter</li>
+                                <li>Wait for AI to generate your web experience</li>
+                                <li>Interact with your creation</li>
+                                <li>Update by entering new instructions</li>
+                                <li>Use right-click to edit specific elements</li>
+                                <li>Bookmark your project</li>
+                                <li>Publish to get a shareable link</li>
+                                <li>Download as an HTML file</li>
+                            </ol>
+                        </div>
+                        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-xl p-8 shadow-xl">
+                            <h2 class="text-3xl font-bold mb-6 text-yellow-300">Features</h2>
+                            <ul class="list-disc list-inside space-y-3">
+                                <li>Instant Web Generation</li>
+                                <li>Interactive Simulated Browser</li>
+                                <li>Project Updates</li>
+                                <li>Right-Click Element Editing</li>
+                                <li>Bookmarking</li>
+                                <li>Publishing</li>
+                                <li>Downloading</li>
+                                <li>Revisions</li>
+                                <li>Model Selection</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <iframe id="simulation-frame" class="w-full h-full hidden"></iframe>
+        </div>
+
+        <div id="status-bar" class="flex justify-between items-center">
+            <span id="status-message">Ready</span>
+            <a href="https://github.com/techcow2/netsim" target="_blank" id="github-link" class="mx-auto">GitHub</a>
+        </div>
+
+        <div id="bookmarks-panel"></div>
+        <div id="loading-overlay" style="display: none;">
+            <div id="loading-spinner"></div>
+            <div id="loading-text">Generating Simulation...</div>
+            <div class="progress-container">
+                <div class="generation-stage">Initializing...</div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-stats">
+                    <span class="progress-percentage">0%</span>
+                    <span class="progress-time-estimate">Est. time: calculating...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="edit-modal" class="modal">
+    <div class="modal-content">
+        <h2 id="edit-mode-label">Edit Element</h2>
+        <input type="text" id="edit-input" placeholder="Enter your changes here">
+        <div class="modal-buttons">
+            <button id="update-element">Update</button>
+            <button id="cancel-edit">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="whatsNewModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div class="flex justify-center mb-4">
+            <div class="text-center">
+                <i class="fas fa-sparkles text-purple-500 text-2xl"></i>
+                <h2 class="text-xl font-bold text-white m-0">What's New</h2>
+            </div>
+        </div>
+        <div class="whats-new-content">
+            <ul>
+                <li>Enhanced element editing with multiple options: Edit, Style, Replace, Duplicate, and Delete</li>
+                <li>Improved element selection with more precise targeting</li>
+                <li>Added visual feedback with notifications</li>
+                <li>Better progress indicators during simulation generation</li>
+                <li>More detailed element identification for better editing accuracy</li>
+            </ul>
+        </div>
+        <button id="whats-new-got-it" class="btn-primary">Got it!</button>
+    </div>
+</div>
+
+<div id="modal">
+    <div id="modal-content">
+        <span id="modal-close">&times;</span>
+        <h2>Published URL</h2>
+        <input type="text" id="generated-url" readonly>
+        <button id="copy-url">Copy URL</button>
+        <button id="open-url">Open URL</button>
+    </div>
+</div>
+
+<div id="improved-prompt-modal">
+    <div id="improved-prompt-content">
+        <h2>Improved Prompt</h2>
+        <textarea id="improved-prompt-text"></textarea>
+        <div id="improved-prompt-buttons">
+            <button id="use-prompt">Use this prompt</button>
+            <button id="cancel-prompt">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="apiKeyModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <div class="w-full flex items-center justify-center gap-3 mb-4">
+            <i class="fas fa-key text-purple-500 text-2xl"></i>
+            <h2 class="text-xl font-bold text-white m-0">API Settings</h2>
+        </div>
+        <p>Enter your API keys to use the required services. Your API keys are stored locally in your browser.</p>
+        <div class="form-group">
+            <label for="openrouter-api-key">OpenRouter API Key:</label>
+            <input type="password" id="openrouter-api-key" placeholder="Enter your OpenRouter API key">
+        </div>
+        <div class="form-group mt-4">
+            <label for="pixabay-api-key">Pixabay API Key:</label>
+            <input type="password" id="pixabay-api-key" placeholder="Enter your Pixabay API key">
+        </div>
+        <div class="modal-buttons">
+            <button id="save-api-key" class="btn-primary">Save</button>
+            <button id="cancel-api-key">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="image-upload-modal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2>Upload Image</h2>
+        <input type="file" id="image-upload-input" accept="image/*">
+        <button id="upload-image-btn">Upload</button>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script defer src="js/lz-string.min.js"></script>
+<script defer src="js/openrouter-api.js"></script>
+<script defer src="js/storage.js"></script>
+<script defer src="js/core.js"></script>
+<script defer src="js/ui.js"></script>
+<script defer src="js/api.js"></script>
+<script defer src="js/history.js"></script>
+<script defer src="js/editor.js"></script>
+<script defer src="js/main.js"></script>
+<script>
+    // Show What's New modal on first visit after update
+    window.addEventListener('DOMContentLoaded', function() {
+        const lastVisitVersion = localStorage.getItem('netsim_version');
+        const currentVersion = '1.2.0'; // Updated version number for OpenRouter API integration
+        
+        if (lastVisitVersion !== currentVersion) {
+            setTimeout(function() {
+                document.getElementById('whatsNewModal').style.display = 'block';
+                
+                // Update What's New content to include OpenRouter API integration
+                const whatsNewContent = document.querySelector('.whats-new-content ul');
+                if (whatsNewContent) {
+                    const newFeatureItem = document.createElement('li');
+                    newFeatureItem.textContent = 'Added OpenRouter API integration';
+                    whatsNewContent.insertBefore(newFeatureItem, whatsNewContent.firstChild);
+                }
+                
+                localStorage.setItem('netsim_version', currentVersion);
+            }, 1000);
+        }
+        
+        // Close What's New modal
+        document.querySelector('#whatsNewModal .modal-close').addEventListener('click', function() {
+            document.getElementById('whatsNewModal').style.display = 'none';
+        });
+        
+        document.getElementById('whats-new-got-it').addEventListener('click', function() {
+            document.getElementById('whatsNewModal').style.display = 'none';
+        });
+    });
+</script>
+</body>
+</html>
