@@ -47,14 +47,6 @@ We're particularly interested in feedback on the following areas:
 3. Comparison of simulation quality between different models
 4. Overall stability during extended usage
 
-## 📣 Providing Feedback
-
-Your feedback is crucial for improving NetSim! Please report any issues or suggestions through one of these channels:
-
-- Open an issue on our GitHub repository
-- Join our Discord server and post in the #beta-feedback channel
-- Send an email to beta-feedback@netsim.example.com
-
 ## ⏪ Reverting to Stable
 
 If you encounter critical issues with the beta build, you can revert to the stable version by:
